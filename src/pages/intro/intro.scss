@@ -1,0 +1,41 @@
+page-intro {
+    .intro {
+        background-color: #042C41;
+    }
+    .intro h1 {
+        color: #fff;
+        font-size: 2.5em;
+        font-weight: 200;
+        margin: 10px 0 0 0;
+    }
+    .intro h2 {
+        color: #fff;
+        font-size: 1.1em;
+        letter-spacing: 1px;
+        font-weight: 200;
+        margin: 5px 0 0 0;
+    }
+    .spinner {
+        text-align: center;
+        color: #fff;
+        font-size: 1em;
+        letter-spacing: 1px;
+        font-weight: 200;
+        margin-top: 20px;
+        stroke: #fff !important;
+        fill: #fff !important;
+    }
+    .spinner-splash {
+        position: absolute;
+    }
+    .splash-screen {
+        position: absolute;
+        bottom: 10px;
+        color: #fff;
+        width: 100%;
+    }
+    .cidade {
+        display: inline-block;
+    }
+
+}
