@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Constants } from "../../app/constants";
+import { LoginPage } from "../login/login";
 
 /**
  * Generated class for the IntroPage page.
@@ -10,16 +12,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-intro',
-  templateUrl: 'intro.html',
+  	selector: 'page-intro',
+  	templateUrl: 'intro.html',
 })
 export class IntroPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+	nome: string = ''
+	cidade: string = ''
+	constants: any = Constants
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad IntroPage');
-  }
+  	constructor(public navCtrl: NavController, public navParams: NavParams) {
+    	this.navCtrl.push(LoginPage);
+  	}
+
+  	ionViewDidLoad() {
+    	this.nome = this.constants.nome
+    	this.cidade = this.constants.cidade
+  	}
 
 }

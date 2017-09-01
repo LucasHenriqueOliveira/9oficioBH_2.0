@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Constants } from "../../app/constants";
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 
 /**
  * Generated class for the LoginPage page.
@@ -15,11 +17,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+	private formLogin: FormGroup
+	
+	emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
+  	nome: string = ''
+  	cidade: string = ''
+	constants: any = Constants
 
+	constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+		this.formLogin = this.formBuilder.group({
+			email: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
+			password: this.formBuilder.control('', [Validators.required])
+		  })
+	}
+
+	ionViewDidLoad() {
+		this.nome = this.constants.nome
+		this.cidade = this.constants.cidade
+	}
 }

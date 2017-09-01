@@ -20,7 +20,7 @@ page-intro {
         color: #fff !important;
         font-size: 1em;
         letter-spacing: 1px;
-        font-weight: 200;
+        font-weight: 300;
         stroke: #fff !important;
         fill: #fff !important;
     }
@@ -41,13 +41,13 @@ page-intro {
     }
     ion-spinner {
         * {
-          stroke: #fff;
+            stroke: #fff;
         }
-    
+
         &.spinner-circles circle,
         &.spinner-bubbles circle,
         &.spinner-dots circle {
-          fill: #fff;
+            fill: #fff;
         }
-      }
+    }
 }
