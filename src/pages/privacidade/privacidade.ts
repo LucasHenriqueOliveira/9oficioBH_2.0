@@ -19,7 +19,6 @@ export class PrivacidadePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PrivacidadePage');
   }
 
 }
