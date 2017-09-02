@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Constants } from "../../app/constants";
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { CadastroPage } from "../cadastro/cadastro";
 
 /**
  * Generated class for the LoginPage page.
@@ -25,7 +26,7 @@ export class LoginPage {
   	cidade: string = ''
 	constants: any = Constants
 
-	constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+	constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
 		this.formLogin = this.formBuilder.group({
 			email: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
 			password: this.formBuilder.control('', [Validators.required])
@@ -35,5 +36,37 @@ export class LoginPage {
 	ionViewDidLoad() {
 		this.nome = this.constants.nome
 		this.cidade = this.constants.cidade
+	}
+
+	signup() {
+		this.navCtrl.push(CadastroPage);
+	}
+
+	esqueceuSenha() {
+		let prompt = this.alertCtrl.create({
+		  title: 'Esqueceu a senha?',
+		  message: "Entre com o seu e-mail cadastrado",
+		  inputs: [
+			{
+			  name: 'email',
+			  placeholder: 'Seu e-mail'
+			},
+		  ],
+		  buttons: [
+			{
+			  text: 'Cancelar',
+			  handler: data => {
+				console.log('Cancel clicked');
+			  }
+			},
+			{
+			  text: 'Enviar',
+			  handler: data => {
+				console.log(data);
+			  }
+			}
+		  ]
+		});
+		prompt.present();
 	}
 }

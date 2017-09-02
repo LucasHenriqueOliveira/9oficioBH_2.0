@@ -12,6 +12,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { IntroPageModule } from "../pages/intro/intro.module";
 import { LoginPageModule } from "../pages/login/login.module";
+import { CadastroPageModule } from "../pages/cadastro/cadastro.module";
+import { PrivacidadePageModule } from "../pages/privacidade/privacidade.module";
 
 @NgModule({
   declarations: [
@@ -21,9 +23,15 @@ import { LoginPageModule } from "../pages/login/login.module";
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      backButtonText: '',
+      backButtonIcon: 'arrow-round-back',
+      iconMode: 'md'
+    }),
     IntroPageModule,
-    LoginPageModule
+    LoginPageModule,
+    CadastroPageModule,
+    PrivacidadePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
