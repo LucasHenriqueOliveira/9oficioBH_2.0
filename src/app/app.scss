@@ -64,7 +64,8 @@ input[type=text],
 input[type=password],
 input[type=date],
 input[type=time],
-input[type=email] {
+input[type=email],
+input[type=tel] {
     font-size: 14pt;
     border-bottom: 1px solid #ECEEF6
 }
@@ -108,6 +109,16 @@ input {
     -ms-flex: 0 0 33.3333%;
     flex: 0 0 33.3333%;
     max-width: 33.3333%;
+}
+
+.col-50 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 50%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 50%;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
 }
 
 .col-66,
@@ -307,4 +318,97 @@ hr {
 }
 .padding-top-bottom {
     padding: 15px 0 15px 0;
+}
+
+.alert-input {
+    font-size: 12pt !important
+}
+
+.toolbar-background {
+    background: none !important;
+    border: none !important
+}
+
+.bar-royal {
+    border-color: #042C41;
+    background-color: #042C41;
+    background-image: linear-gradient(0deg, #042C41, #042C41 50%, transparent 50%);
+    color: #fff
+}
+
+.bar-royal .title {
+    color: #fff
+}
+
+.bar-royal.bar-footer {
+    background-image: linear-gradient(180deg, #042C41, #042C41 50%, transparent 50%)
+}
+
+.bar-dark {
+    border-color: #111;
+    background-color: #444;
+    background-image: linear-gradient(0deg, #111, #111 50%, transparent 50%);
+    color: #fff
+}
+
+.bar-royal .button {
+    border-color: #042C41;
+    background-color: #042C41;
+    color: #fff
+}
+
+.bar-royal .button:hover {
+    color: #fff;
+    text-decoration: none
+}
+
+.bar-royal .button.activated,
+.bar-royal .button.active {
+    border-color: #042C41;
+    background-color: #042C41
+}
+
+.bar-royal .button.button-clear {
+    border-color: transparent;
+    background: 0 0;
+    box-shadow: none;
+    color: #fff;
+    font-size: 17px
+}
+
+.bar-royal .button.button-icon {
+    border-color: transparent;
+    background: 0 0
+}
+
+.screen-header {
+    background: #042C41;
+    padding-top: 0;
+    padding-bottom: 20px;
+    margin-bottom: 20px
+}
+
+.screen-header h1 {
+    color: #FFF;
+    font-weight: 300;
+    font-size: 24pt
+}
+
+.screen-header h1 small {
+    display: block;
+    font-size: 10pt;
+    margin-top: 10px
+}
+
+.back-button {
+    color: #fff !important;
+    padding-left: 28px;
+}
+
+.item-inner {
+    border-bottom: none !important
+}
+
+.item-input.input-control {
+    margin-bottom: 0 !important
 }
