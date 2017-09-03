@@ -6,6 +6,8 @@ import { CadastroPage } from "../cadastro/cadastro";
 import { Login } from "./login.model";
 import { LoginService } from "./login.service";
 import { HomePage } from "../home/home";
+import { UserProvider } from "../../providers/user/user";
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the LoginPage page.
@@ -28,7 +30,8 @@ export class LoginPage {
 	nome: string = ''
 	cidade: string = ''
 	constants: any = Constants
-	dataLogin: any = []
+	dataToken: any = []
+	dataUser: any = []
 	dataForgotEmail: any = []
 
 	constructor(public navCtrl: NavController, 
@@ -37,7 +40,9 @@ export class LoginPage {
 				public alertCtrl: AlertController,
 				public toastCtrl: ToastController,
 				public loadingCtrl: LoadingController, 
-				private loginService: LoginService) {
+				private loginService: LoginService,
+				private userProvider: UserProvider,
+				private storage: Storage) {
 
 		this.formLogin = this.formBuilder.group({
 			email: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
@@ -55,15 +60,33 @@ export class LoginPage {
 	}
 
 	login(login: Login) {
+		this.storage.clear();
 		let loader = this.loadingCtrl.create({content: "Aguarde..."});
 		loader.present();
 
 		this.loginService.login(login).subscribe(data => {
-			this.dataLogin = data
-			loader.dismiss();
-			// @TODO salvar no localstorage os dados do usuario 
-			this.navCtrl.push(HomePage);
+			this.dataToken = data
+			this.storage.set('token', this.dataToken.data.token)
+			loader.dismiss()
+
+			this.userProvider.getUser().subscribe(res => {
+				this.dataUser = res
+				this.storage.set('user', this.dataUser.data)
+				loader.dismiss()
+				this.navCtrl.push(HomePage);
+			  }, err => {
+				this.storage.clear();
+				loader.dismiss();
+				let toast = this.toastCtrl.create({
+					message: 'Usuário não encontrado!',
+					duration: 3000,
+					position: 'middle',
+					cssClass: 'toast-error'
+				});
+				toast.present();
+			  })
 		  }, err => {
+			this.storage.clear();
 			loader.dismiss();
 			let toast = this.toastCtrl.create({
 				message: 'Usuário não encontrado!',

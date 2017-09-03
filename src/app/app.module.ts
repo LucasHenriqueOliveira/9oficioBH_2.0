@@ -3,6 +3,7 @@ import { HttpModule } from '@angular/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -16,6 +17,8 @@ import { LoginPageModule } from "../pages/login/login.module";
 import { CadastroPageModule } from "../pages/cadastro/cadastro.module";
 import { PrivacidadePageModule } from "../pages/privacidade/privacidade.module";
 import { LoginService } from "../pages/login/login.service";
+import { CadastroService } from "../pages/cadastro/cadastro.service";
+import { UserProvider } from '../providers/user/user';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { LoginService } from "../pages/login/login.service";
     IntroPageModule,
     LoginPageModule,
     CadastroPageModule,
-    PrivacidadePageModule
+    PrivacidadePageModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -46,7 +50,9 @@ import { LoginService } from "../pages/login/login.service";
     StatusBar,
     SplashScreen,
     LoginService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    CadastroService,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserProvider
   ]
 })
 export class AppModule {}
