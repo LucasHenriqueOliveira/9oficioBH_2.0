@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { Constants } from "../../app/constants";
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { CadastroPage } from "../cadastro/cadastro";
+import { Login } from "./login.model";
+import { LoginService } from "./login.service";
 
 /**
  * Generated class for the LoginPage page.
@@ -22,11 +24,18 @@ export class LoginPage {
 	
 	emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 
-  	nome: string = ''
-  	cidade: string = ''
+	nome: string = ''
+	cidade: string = ''
 	constants: any = Constants
+	dataLogin: any = []
 
-	constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
+	constructor(public navCtrl: NavController, 
+				public navParams: NavParams, 
+				private formBuilder: FormBuilder, 
+				public alertCtrl: AlertController,
+				public toastCtrl: ToastController, 
+				private loginService: LoginService) {
+
 		this.formLogin = this.formBuilder.group({
 			email: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
 			password: this.formBuilder.control('', [Validators.required])
@@ -40,6 +49,22 @@ export class LoginPage {
 
 	signup() {
 		this.navCtrl.push(CadastroPage);
+	}
+
+	login(login: Login) {
+		this.loginService.login(login).subscribe(data => {
+			this.dataLogin = data
+
+			console.log("logado")
+		  }, err => {
+			let toast = this.toastCtrl.create({
+				message: 'Usuário não encontrado!',
+				duration: 3000,
+				position: 'middle',
+				cssClass: 'toast-error'
+			});
+			toast.present();
+		  })
 	}
 
 	esqueceuSenha() {

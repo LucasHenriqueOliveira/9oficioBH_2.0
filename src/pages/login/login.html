@@ -6,7 +6,7 @@
 	</div>
 
 	<div class="content-padding-extra">
-		<form [formGroup]="formLogin" (ngSubmit)="loginCartorio()" novalidate>
+		<form [formGroup]="formLogin" novalidate>
 			<ion-item class="item-input input-control">
 				<ion-input type="text" formControlName="email" placeholder="Seu e-mail"></ion-input>
 			</ion-item>
@@ -20,7 +20,7 @@
 				<button type="submit" class="button button-outline button-light item-icon-right"
 					[disabled]="!formLogin.valid"
 					[class.button-royal]="formLogin.valid"
-					(click)="loginCartorio()">
+					(click)="login(formLogin.value)">
 					Entrar
 				</button>
 			</div>

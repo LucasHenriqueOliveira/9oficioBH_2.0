@@ -4,5 +4,6 @@ export const Constants = {
     estado: 'Minas Gerais',
     telefone: '3247-3535',
     endereco: 'Rua São Paulo, 1115, Centro',
-    site: 'https://goo.gl/ZXctYc'
+    site: 'https://goo.gl/ZXctYc',
+    api: 'http://localhost:8000/api'
 };

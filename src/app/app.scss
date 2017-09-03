@@ -412,3 +412,15 @@ hr {
 .item-input.input-control {
     margin-bottom: 0 !important
 }
+
+.toast-message{
+    color: #fff;
+    opacity: 0.9;
+    border-radius: 10px;
+}
+
+.toast-error {
+    > div{
+        background: #b31111 !important;
+    }
+}
