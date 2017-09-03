@@ -18,4 +18,11 @@ export class LoginService {
             .map(response => response.json())
     }
 
+    esqueceuSenha(email: any): Observable<string> {
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json')
+         return this.http.post(`${this.constants.api}/usuario/reset`, JSON.stringify(email), new RequestOptions({headers: headers}))
+            .map(response => response.json())
+    }
+
 }

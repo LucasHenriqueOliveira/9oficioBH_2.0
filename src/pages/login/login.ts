@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController, LoadingController } from 'ionic-angular';
 import { Constants } from "../../app/constants";
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { CadastroPage } from "../cadastro/cadastro";
 import { Login } from "./login.model";
 import { LoginService } from "./login.service";
+import { HomePage } from "../home/home";
 
 /**
  * Generated class for the LoginPage page.
@@ -28,12 +29,14 @@ export class LoginPage {
 	cidade: string = ''
 	constants: any = Constants
 	dataLogin: any = []
+	dataForgotEmail: any = []
 
 	constructor(public navCtrl: NavController, 
 				public navParams: NavParams, 
 				private formBuilder: FormBuilder, 
 				public alertCtrl: AlertController,
-				public toastCtrl: ToastController, 
+				public toastCtrl: ToastController,
+				public loadingCtrl: LoadingController, 
 				private loginService: LoginService) {
 
 		this.formLogin = this.formBuilder.group({
@@ -52,11 +55,16 @@ export class LoginPage {
 	}
 
 	login(login: Login) {
+		let loader = this.loadingCtrl.create({content: "Aguarde..."});
+		loader.present();
+
 		this.loginService.login(login).subscribe(data => {
 			this.dataLogin = data
-
-			console.log("logado")
+			loader.dismiss();
+			// @TODO salvar no localstorage os dados do usuario 
+			this.navCtrl.push(HomePage);
 		  }, err => {
+			loader.dismiss();
 			let toast = this.toastCtrl.create({
 				message: 'Usuário não encontrado!',
 				duration: 3000,
@@ -79,15 +87,44 @@ export class LoginPage {
 		  ],
 		  buttons: [
 			{
-			  text: 'Cancelar',
-			  handler: data => {
-				console.log('Cancel clicked');
-			  }
+			  text: 'Cancelar'
 			},
 			{
 			  text: 'Enviar',
 			  handler: data => {
-				console.log(data);
+				let loader = this.loadingCtrl.create({content: "Aguarde..."});
+				loader.present();
+
+				this.loginService.esqueceuSenha(data).subscribe(res => {
+					this.dataForgotEmail = res
+					loader.dismiss();
+					if(this.dataForgotEmail.error) {
+						let toast = this.toastCtrl.create({
+							message: this.dataForgotEmail.message,
+							duration: 3000,
+							position: 'middle',
+							cssClass: 'toast-error'
+						});
+						toast.present();
+					} else {
+						let toast = this.toastCtrl.create({
+							message: "Enviamos um email com informações da nova senha!",
+							duration: 3000,
+							position: 'middle',
+							cssClass: 'toast-success'
+						});
+						toast.present();
+					}
+				  }, err => {
+					loader.dismiss();
+					let toast = this.toastCtrl.create({
+						message: 'Erro ao recuperar a senha do usuário!',
+						duration: 3000,
+						position: 'middle',
+						cssClass: 'toast-error'
+					});
+					toast.present();
+				  })
 			  }
 			}
 		  ]
