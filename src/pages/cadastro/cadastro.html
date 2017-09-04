@@ -13,7 +13,7 @@
     	<h1>Cadastre-se</h1>
 	</div>
 	<div class="content-padding-extra">
-		<form [formGroup]="formSignUp" (ngSubmit)="signupCartorio()" novalidate>
+		<form [formGroup]="formSignUp" novalidate>
 			<ion-item class="item-input input-control">
 				<ion-input type="text" formControlName="nome" placeholder="Nome Completo"></ion-input>
 			</ion-item>
@@ -40,7 +40,8 @@
 			</div>
 	
 			<div class="pull-right clearfix">
-				<button class="button button-outline button-light item-icon-right" ng-click="signupCartorio()"
+				<button class="button button-outline button-light item-icon-right" 
+						(click)="signup(formSignUp.value)"
 						[disabled]="!formSignUp.valid"
 						[class.button-royal]="formSignUp.valid">
 				Próximo

@@ -67,7 +67,6 @@ export class LoginPage {
 		this.loginService.login(login).subscribe(data => {
 			this.dataToken = data
 			this.storage.set('token', this.dataToken.data.token)
-			loader.dismiss()
 
 			this.userProvider.getUser().subscribe(res => {
 				this.dataUser = res
