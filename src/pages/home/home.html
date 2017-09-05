@@ -1,18 +1,93 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+<ion-content class="padding">
+    <div class="registry-header">
+        <div class="pull-left menu-button">
+            <button ion-button menuToggle icon-only class="more">
+				<ion-icon ios="md-more" md="md-more"></ion-icon>
+            </button>
+        </div>
+        <div class="pull-left">
+            <h1>Olá {{nome}}</h1>
+            <h4>em que podemos ajudar?</h4>
+        </div>
+        <div class="clearfix"></div>
+	</div>
+	<div class="registry-wrapper">
+		<h4>Novos documentos</h4>
+		<swiper [config]="config" [(index)]="index">
+			<div class="swiper-slide">
+				<div class="card">
+					<div class="item item-text-wrap" ng-click="go('app.certidao')">
+						<h3>Certidão e Traslados</h3>
+						<a ng-click="go('app.certidao')">
+							<ion-icon name="add" class="icon"></ion-icon>Solicitar</a>
+					</div>
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="card">
+					<div class="item item-text-wrap" ng-click="go('app.certidao')">
+						<h3>Procuração</h3>
+						<a ng-click="go('app.certidao')">
+							<ion-icon name="add" class="icon"></ion-icon>Solicitar</a>
+					</div>
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="card">
+					<div class="item item-text-wrap" ng-click="go('app.certidao')">
+						<h3>Reconhecimento de Firma</h3>
+						<a ng-click="go('app.certidao')">
+							<ion-icon name="add" class="icon"></ion-icon>Pesquisar
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="card">
+					<div class="item item-text-wrap" ng-click="go('app.certidao')">
+						<h3>Testamento</h3>
+						<a ng-click="go('app.certidao')">
+							<ion-icon name="add" class="icon"></ion-icon>Agendar
+						</a>
+					</div>
+				</div>
+			</div>
+		</swiper>
+		<h4>Cálculos</h4>
+		<swiper [config]="config" [(index)]="index">
+			<div class="swiper-slide">
+				<div class="card calculate">
+					<div class="item item-text-wrap" ng-click="go('app.certidao')">
+						<h3 class="itbi">Cálculo de ITBI</h3>
+						<h5>{{cidade}}</h5>
+						<a ng-click="go('app.certidao')">
+							<ion-icon name="add" class="icon"></ion-icon>Calcular</a>
+					</div>
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="card calculate">
+					<div class="item item-text-wrap" ng-click="go('app.certidao')">
+						<h3 class="itbi">Cálculo de ITCD</h3>
+						<h5>{{estado}}</h5>
+						<a ng-click="go('app.certidao')">
+							<ion-icon name="add" class="icon"></ion-icon>Calcular</a>
+					</div>
+				</div>
+			</div>
+		</swiper>
+		<h4>Histórico</h4>
+		<swiper [config]="config" [(index)]="index">
+			<div class="swiper-slide">
+				<div class="card documents">
+					<div class="item item-text-wrap" ng-click="go('app.certidao')">
+						<h3>Procuração</h3>
+						<span>Solicitado</span>
+						<span class="time"><ion-icon name="calendar"></ion-icon>24/08/2017</span>
+						<span class="time"><ion-icon name="clock"></ion-icon>18:44</span>
+					</div>
+				</div>
+			</div>
+		</swiper>
+	</div>
 </ion-content>

@@ -47,7 +47,9 @@ export class LoginPage {
 		this.formLogin = this.formBuilder.group({
 			email: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
 			password: this.formBuilder.control('', [Validators.required])
-		  })
+			})
+			
+			this.navCtrl.push(HomePage);
 	}
 
 	ionViewDidLoad() {

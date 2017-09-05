@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -15,15 +14,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { IntroPageModule } from "../pages/intro/intro.module";
 import { LoginPageModule } from "../pages/login/login.module";
 import { CadastroPageModule } from "../pages/cadastro/cadastro.module";
+import { HomePageModule } from "../pages/home/home.module";
 import { PrivacidadePageModule } from "../pages/privacidade/privacidade.module";
 import { LoginService } from "../pages/login/login.service";
 import { CadastroService } from "../pages/cadastro/cadastro.service";
 import { UserProvider } from '../providers/user/user';
 
+
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     ListPage
   ],
   imports: [
@@ -37,13 +37,13 @@ import { UserProvider } from '../providers/user/user';
     IntroPageModule,
     LoginPageModule,
     CadastroPageModule,
+    HomePageModule,
     PrivacidadePageModule,
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     ListPage
   ],
   providers: [
