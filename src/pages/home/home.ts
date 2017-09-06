@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SwiperComponent, SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { Constants } from "../../app/constants";
+import { UserProvider } from "../../providers/user/user";
+import { DataProvider } from "../../providers/data/data";
 
 @IonicPage()
 @Component({
@@ -11,10 +13,13 @@ import { Constants } from "../../app/constants";
 export class HomePage {
 
 	nome: string
+	nome_completo: string
 	cidade: string
 	estado: string
 	constants: any = Constants
-	public show: boolean = true;
+	historico: any
+	loading: boolean = true
+	public show: boolean = true
 
 	public type: string = 'component';
 
@@ -34,10 +39,37 @@ export class HomePage {
 	@ViewChild(SwiperComponent) componentRef: SwiperComponent;
 	@ViewChild(SwiperDirective) directiveRef: SwiperDirective;
 
-  	constructor(public navCtrl: NavController) {
-		this.nome = 'Lucas';
+	constructor(public navCtrl: NavController, 
+				private userProvider: UserProvider, 
+				private dataProvider: DataProvider) {
 		this.cidade = this.constants.cidade;
 		this.estado = this.constants.estado;
+
+		this.userProvider.getUserData().subscribe(res => {
+			this.nome_completo = (res['nome']).split(" ");
+			this.nome = this.nome_completo[0];
+			
+			this.dataProvider.getHistorico(res['id']).subscribe(res => {
+				this.historico = res;
+				this.loading = false;
+			}, err => {
+				this.loading = false;
+				console.log('error: '+ err)
+			})
+		}, err => {
+			this.loading = false;
+			console.log('error: '+ err)
+		})
+	}
+
+	getStatus(tipo: string, status: string) {
+		switch (tipo) {
+			case 'Certidão':
+			case 'Procuração':
+				return (status == 'Aguardando') ? 'Solicitado' : status;
+			case 'Testamento':
+				return (status == 'Aguardando') ? 'Agendado' : status;
+		}
 	}
 	  
 	toggleType() {

@@ -77,17 +77,19 @@
 			</div>
 		</swiper>
 		<h4>Histórico</h4>
-		<swiper [config]="config" [(index)]="index">
-			<div class="swiper-slide">
+		<swiper [config]="config" [(index)]="index" *ngIf="historico && !loading">
+			<div class="swiper-slide" *ngFor="let pedido of historico">
 				<div class="card documents">
-					<div class="item item-text-wrap" ng-click="go('app.certidao')">
-						<h3>Procuração</h3>
-						<span>Solicitado</span>
-						<span class="time"><ion-icon name="calendar"></ion-icon>24/08/2017</span>
-						<span class="time"><ion-icon name="clock"></ion-icon>18:44</span>
+					<div class="item item-text-wrap">
+						<h3>{{pedido.tipo}}</h3>
+						<span>{{getStatus(pedido.tipo, pedido.status)}}</span>
+						<span class="time"><ion-icon name="calendar"></ion-icon>{{pedido.data}}</span>
+						<span class="time"><ion-icon name="clock"></ion-icon>{{pedido.hora}}</span>
 					</div>
 				</div>
 			</div>
 		</swiper>
+		<p class="sem_historico" *ngIf="!historico && loading"><ion-spinner name="dots"></ion-spinner></p>
+		<p class="sem_historico" *ngIf="!historico && !loading">Não possui histórico!</p>
 	</div>
 </ion-content>

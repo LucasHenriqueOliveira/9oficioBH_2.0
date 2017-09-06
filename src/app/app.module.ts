@@ -19,6 +19,7 @@ import { PrivacidadePageModule } from "../pages/privacidade/privacidade.module";
 import { LoginService } from "../pages/login/login.service";
 import { CadastroService } from "../pages/cadastro/cadastro.service";
 import { UserProvider } from '../providers/user/user';
+import { DataProvider } from '../providers/data/data';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { UserProvider } from '../providers/user/user';
     LoginService,
     CadastroService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserProvider
+    UserProvider,
+    DataProvider
   ]
 })
 export class AppModule {}
