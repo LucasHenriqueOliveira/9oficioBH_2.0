@@ -438,3 +438,60 @@ hr {
 .pull-left {
     float: left
 }
+
+.menu {
+    background: #042C41;
+}
+
+.menu-header h1 small {
+    display: block;
+    font-size: 10pt;
+    margin-top: 10px;
+}
+
+.menu-header {
+    background: #042C41;
+    padding: 50px 20px 0;
+    margin-bottom: 150px;
+}
+
+.menu-header h1 {
+    color: #FFF;
+    font-weight: 300;
+    font-size: 18pt;
+}
+
+.list {
+    position: relative;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 0;
+    margin-bottom: 20px;
+    border: none
+}
+
+.list:last-child {
+    margin-bottom: 0
+}
+
+.list .item,
+.list .item-content {
+    background: #042C41;
+    border: none
+}
+
+.list .item,
+.list a.item-content {
+    color: #FFF;
+    font-size: 13pt;
+    font-weight: 300;
+    line-height: 30px;
+}
+
+.item-block:first-child {
+    border-top: none !important;
+}
+
+.item-block:last-child {
+    border-bottom: none !important;
+}
