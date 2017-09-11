@@ -51,4 +51,9 @@ export class CalculoPage {
 		}
 	}
 
+	goBack() {
+		this.hasCalculo = false;
+		this.valor = null;
+	}
+
 }
