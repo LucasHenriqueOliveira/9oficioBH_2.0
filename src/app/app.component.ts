@@ -9,6 +9,7 @@ import { IntroPage } from "../pages/intro/intro";
 import { PrivacidadePage } from "../pages/privacidade/privacidade";
 
 import { Constants } from "../app/constants";
+import { ContaPage } from '../pages/conta/conta';
 
 @Component({
   templateUrl: 'app.html'
@@ -45,6 +46,9 @@ export class MyApp {
 		switch (page) {
 			case 'privacidade':
 				this.nav.push(PrivacidadePage);
+				break;
+			case 'conta':
+				this.nav.push(ContaPage);
 				break;
 		}
 	}

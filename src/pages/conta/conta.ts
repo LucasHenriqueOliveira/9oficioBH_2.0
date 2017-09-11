@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { UserProvider } from '../../providers/user/user';
 
 /**
  * Generated class for the ContaPage page.
@@ -15,11 +16,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ContaPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+	nome: string
+	email: string
+	cpf: string
+	telefone: string
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ContaPage');
-  }
+	constructor(public navCtrl: NavController, public navParams: NavParams, private userProvider: UserProvider) {
+		this.userProvider.getUserData().subscribe(res => {
+			this.nome = res['nome']
+			this.email = res['email']
+			this.cpf = res['cpf']
+			this.telefone = res['telefone']
+		}, err => {
+			console.log('error: '+ err)
+		})
+	}
+
+	ionViewDidLoad() {
+	}
 
 }

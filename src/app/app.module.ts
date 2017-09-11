@@ -21,6 +21,7 @@ import { CadastroService } from "../pages/cadastro/cadastro.service";
 import { UserProvider } from '../providers/user/user';
 import { DataProvider } from '../providers/data/data';
 import { CalculoPageModule } from "../pages/calculo/calculo.module";
+import { ContaPageModule } from '../pages/conta/conta.module';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { CalculoPageModule } from "../pages/calculo/calculo.module";
     HomePageModule,
     PrivacidadePageModule,
     CalculoPageModule,
+    ContaPageModule,
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
