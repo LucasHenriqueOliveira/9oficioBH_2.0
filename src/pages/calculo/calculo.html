@@ -1,18 +1,48 @@
-<!--
-  Generated template for the CalculoPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>calculo</ion-title>
-  </ion-navbar>
-
+<ion-header class="bar-royal">
+    <ion-navbar></ion-navbar>
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content>
+	<div class="screen-header content-padding-extra">
+		<h1>{{titulo}}</h1>
+	</div>
+	<div padding>
+		<form *ngIf="!hasCalculo" (ngSubmit)="calcular()" novalidate>
+			<label class="item-input input-control">
+				<input type="tel" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" 
+					[(ngModel)]="valor" [ngModelOptions]="{standalone: true}" placeholder="Valor Venal do Imóvel" required>
+			</label>
+	
+			<div class="pull-right clearfix">
+				<button type="submit" class="button button-outline button-light"
+						[disabled]="!valor"
+						[class.button-royal]="valor">
+					Calcular
+				</button>
+			</div>
+		</form>
+		<div *ngIf="hasCalculo">
+			<p class="message-success">O valor do {{index | uppercase}} é {{valor_calculado | currency: 'BRL': true}}.</p>
+			<div class="pull-right clearfix">
+				<button ng-click="goBack()" class="button button-outline button-royal">
+					Realizar um novo cálculo
+				</button>
+			</div>
+		</div>
+		<div class="informacao-calculos">
+			<ion-icon name="information-circle"></ion-icon>
+			<span *ngIf="index == 'itbi'">
+				O cálculo de ITBI tem como piso o valor declarado pelo cliente, porém, a Prefeitura Municipal de
+				{{cidade}} poderá rever o valor de acordo com os seus parâmetros legais isentando este aplicativo
+				e esta serventia de qualquer divergência que por ventura venha a existir.
+			</span>
+			<span *ngIf="index == 'itcd'">
+				O cálculo de ITCD tem como piso o
+				valor declarado pelo cliente, porém, a Secretaria de Estado de Fazenda de {{estado}} poderá,
+				a seu critério, rever o valor de acordo com os seus parâmetros legais isentando este aplicativo e
+				esta serventia de qualquer divergência que por ventura venha a existir.
+			</span>
+		</div>
+	</div>
+	
 </ion-content>

@@ -57,21 +57,19 @@
 		<swiper [config]="config" [(index)]="index">
 			<div class="swiper-slide">
 				<div class="card calculate">
-					<div class="item item-text-wrap" ng-click="go('app.certidao')">
+					<div class="item item-text-wrap" (click)="go('itbi')">
 						<h3 class="itbi">Cálculo de ITBI</h3>
 						<h5>{{cidade}}</h5>
-						<a ng-click="go('app.certidao')">
-							<ion-icon name="add" class="icon"></ion-icon>Calcular</a>
+						<a><ion-icon name="add" class="icon"></ion-icon>Calcular</a>
 					</div>
 				</div>
 			</div>
 			<div class="swiper-slide">
 				<div class="card calculate">
-					<div class="item item-text-wrap" ng-click="go('app.certidao')">
+					<div class="item item-text-wrap" (click)="go('itcd')">
 						<h3 class="itbi">Cálculo de ITCD</h3>
 						<h5>{{estado}}</h5>
-						<a ng-click="go('app.certidao')">
-							<ion-icon name="add" class="icon"></ion-icon>Calcular</a>
+						<a><ion-icon name="add" class="icon"></ion-icon>Calcular</a>
 					</div>
 				</div>
 			</div>

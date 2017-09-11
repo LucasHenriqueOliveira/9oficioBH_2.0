@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, LOCALE_ID } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicStorageModule } from '@ionic/storage';
@@ -20,6 +20,7 @@ import { LoginService } from "../pages/login/login.service";
 import { CadastroService } from "../pages/cadastro/cadastro.service";
 import { UserProvider } from '../providers/user/user';
 import { DataProvider } from '../providers/data/data';
+import { CalculoPageModule } from "../pages/calculo/calculo.module";
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { DataProvider } from '../providers/data/data';
     CadastroPageModule,
     HomePageModule,
     PrivacidadePageModule,
+    CalculoPageModule,
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
@@ -54,7 +56,8 @@ import { DataProvider } from '../providers/data/data';
     CadastroService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
-    DataProvider
+    DataProvider,
+    {provide: LOCALE_ID, useValue: 'pt-BR'}
   ]
 })
 export class AppModule {}

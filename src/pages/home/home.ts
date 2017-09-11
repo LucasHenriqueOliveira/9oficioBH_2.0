@@ -4,6 +4,7 @@ import { SwiperComponent, SwiperDirective, SwiperConfigInterface } from 'ngx-swi
 import { Constants } from "../../app/constants";
 import { UserProvider } from "../../providers/user/user";
 import { DataProvider } from "../../providers/data/data";
+import { CalculoPage } from "../calculo/calculo";
 
 @IonicPage()
 @Component({
@@ -113,6 +114,10 @@ export class HomePage {
 
 	onIndexChange(index: number) {
 		console.log('Swiper index: ' + index);
+	}
+
+	go(index: string) {
+		this.navCtrl.push(CalculoPage, {"index": index});
 	}
 
 }
