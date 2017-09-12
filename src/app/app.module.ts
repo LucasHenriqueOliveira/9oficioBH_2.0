@@ -22,6 +22,8 @@ import { UserProvider } from '../providers/user/user';
 import { DataProvider } from '../providers/data/data';
 import { CalculoPageModule } from "../pages/calculo/calculo.module";
 import { ContaPageModule } from '../pages/conta/conta.module';
+import { ContatoPageModule } from '../pages/contato/contato.module';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 
 @NgModule({
@@ -44,6 +46,7 @@ import { ContaPageModule } from '../pages/conta/conta.module';
     PrivacidadePageModule,
     CalculoPageModule,
     ContaPageModule,
+    ContatoPageModule,
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
@@ -59,7 +62,8 @@ import { ContaPageModule } from '../pages/conta/conta.module';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
     DataProvider,
-    {provide: LOCALE_ID, useValue: 'pt-BR'}
+    {provide: LOCALE_ID, useValue: 'pt-BR'},
+    EmailComposer
   ]
 })
 export class AppModule {}

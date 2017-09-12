@@ -10,6 +10,7 @@ import { PrivacidadePage } from "../pages/privacidade/privacidade";
 
 import { Constants } from "../app/constants";
 import { ContaPage } from '../pages/conta/conta';
+import { ContatoPage } from '../pages/contato/contato';
 
 @Component({
   templateUrl: 'app.html'
@@ -49,6 +50,9 @@ export class MyApp {
 				break;
 			case 'conta':
 				this.nav.push(ContaPage);
+				break;
+			case 'contato':
+				this.nav.push(ContatoPage);
 				break;
 		}
 	}

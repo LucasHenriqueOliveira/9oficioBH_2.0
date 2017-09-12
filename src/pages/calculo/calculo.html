@@ -24,7 +24,7 @@
 		<div *ngIf="hasCalculo">
 			<p class="message-success">O valor do {{index | uppercase}} é {{valor_calculado | currency: 'BRL': true}}.</p>
 			<div class="pull-right clearfix">
-				<button ng-click="goBack()" class="button button-outline button-royal">
+				<button (click)="goBack()" class="button button-outline button-royal">
 					Realizar um novo cálculo
 				</button>
 			</div>

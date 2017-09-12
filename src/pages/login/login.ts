@@ -49,7 +49,7 @@ export class LoginPage {
 			password: this.formBuilder.control('', [Validators.required])
 			})
 			
-			//this.navCtrl.push(HomePage);
+			this.navCtrl.push(HomePage);
 	}
 
 	ionViewDidLoad() {

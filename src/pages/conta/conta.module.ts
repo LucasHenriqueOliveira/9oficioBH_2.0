@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ContaPage } from './conta';
-import { CpfPipe } from './cpf.pipe';
-import { PhonePipe } from './phone.pipe';
+import { CpfPipe } from '../../pipes/cpf/cpf';
+import { PhonePipe } from '../../pipes/phone/phone';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,7 @@ import { PhonePipe } from './phone.pipe';
     PhonePipe
   ],
   imports: [
-    IonicPageModule.forChild(ContaPage),
-  ],
+    IonicPageModule.forChild(ContaPage)
+  ]
 })
 export class ContaPageModule {}
