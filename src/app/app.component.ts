@@ -11,6 +11,8 @@ import { PrivacidadePage } from "../pages/privacidade/privacidade";
 import { Constants } from "../app/constants";
 import { ContaPage } from '../pages/conta/conta';
 import { ContatoPage } from '../pages/contato/contato';
+import { LoginPage } from '../pages/login/login';
+import { UserProvider } from '../providers/user/user';
 
 @Component({
   templateUrl: 'app.html'
@@ -27,7 +29,8 @@ export class MyApp {
 
 	constructor(public platform: Platform, 
 				public statusBar: StatusBar, 
-				public splashScreen: SplashScreen) {
+				public splashScreen: SplashScreen,
+				private userProvider: UserProvider) {
 		this.initializeApp();
 		this.nome = this.constants.nome
 		this.cidade = this.constants.cidade
@@ -55,5 +58,10 @@ export class MyApp {
 				this.nav.push(ContatoPage);
 				break;
 		}
+	}
+
+	logout() {
+		this.userProvider.clearStorage();
+		this.nav.push(LoginPage);
 	}
 }

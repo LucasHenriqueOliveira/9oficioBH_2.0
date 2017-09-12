@@ -50,4 +50,10 @@ export class UserProvider {
 			return user;
 		});
 	}
+
+	clearStorage(){
+    	this.storage.clear().then(() => {
+			console.log('logout and clear storage');
+    	});
+    }
 }
