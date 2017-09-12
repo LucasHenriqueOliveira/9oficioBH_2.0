@@ -24,6 +24,7 @@ import { CalculoPageModule } from "../pages/calculo/calculo.module";
 import { ContaPageModule } from '../pages/conta/conta.module';
 import { ContatoPageModule } from '../pages/contato/contato.module';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { EmailComposer } from '@ionic-native/email-composer';
     UserProvider,
     DataProvider,
     {provide: LOCALE_ID, useValue: 'pt-BR'},
-    EmailComposer
+    EmailComposer,
+    SocialSharing
   ]
 })
 export class AppModule {}
