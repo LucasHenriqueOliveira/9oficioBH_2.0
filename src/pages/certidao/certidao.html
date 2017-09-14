@@ -1,0 +1,55 @@
+<ion-header class="bar-royal">
+	<ion-navbar></ion-navbar>
+</ion-header>
+
+<ion-content>
+  	<div class="screen-header content-padding-extra">
+		<h1>Certidão</h1>
+	</div>
+	<div class="content-padding-extra">
+		<form *ngIf="!hasCertidao" [formGroup]="formCertidao" novalidate>
+			<ion-item class="select">
+				<ion-label>Ato</ion-label>
+				<ion-select formControlName="ato">
+					<ion-option value="Procuração">Procuração</ion-option>
+					<ion-option value="Escritura">Escritura</ion-option>
+				</ion-select>
+			</ion-item>
+			<ion-item class="item-input input-control">
+				<ion-input type="text" formControlName="livro" placeholder="Livro"></ion-input>
+			</ion-item>
+			<ion-item class="item-input input-control padding-top-20">
+				<ion-input type="text" formControlName="folha" placeholder="Folha"></ion-input>
+			</ion-item>
+			<ion-item class="item-input input-control padding-top-20">
+				<ion-input type="text" formControlName="outorgante" placeholder="Outorgante"></ion-input>
+			</ion-item>
+			<ion-item class="item-input input-control padding-top-25 margin-bottom-25">
+				<ion-input type="text" formControlName="outorgado" placeholder="Outorgado"></ion-input>
+			</ion-item>
+	
+			<div class="pull-right clearfix">
+				<button class="button button-outline button-light item-icon-right" 
+						(click)="submit(formCertidao.value)"
+						[disabled]="!formCertidao.valid"
+						[class.button-royal]="formCertidao.valid">
+						Enviar
+				</button>
+			</div>
+		</form>
+		<div *ngIf="hasCertidao">
+			<p class="message-success">Dados enviados com sucesso!</p>
+			<div class="message-text">
+				Todos os documentos de bens móveis ou imóveis bem como dos outorgantes deverão ser apresentados em original quando da assinatura.
+				<br /><br />
+				Para maiores informações ligue: {{telefone}}.
+				<br /><br />
+			</div>
+			<div class="pull-right clearfix">
+				<button (click)="goBack()" class="button button-outline button-royal">
+					Solicitar novo documento
+				</button>
+			</div>
+		</div>
+	</div>
+</ion-content>

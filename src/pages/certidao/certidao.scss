@@ -1,0 +1,60 @@
+page-certidao {
+    .scroll-content {
+        margin-top: 23px !important;
+    }
+
+    .select {
+        margin-bottom: 11px;
+        padding: 0;
+    }
+
+    .select button {
+        font-size: 14pt;
+        border-bottom: 1px solid #ECEEF6;
+    }
+
+    .select ion-label {
+        color: #999999;
+    }
+
+    .item-input.input-control {
+        font-size: 14pt !important;
+        border-bottom: 1px solid #ECEEF6 !important;
+        padding: 10px 0 0 0 !important;
+    }
+
+    input[type=text] {
+        border-bottom: none !important;
+        padding-bottom: 0 !important;
+    }
+
+    .item-input.input-control.padding-top-20 {
+        padding-top: 20px !important;
+    }
+
+    .item-input.input-control.padding-top-25 {
+        padding-top: 25px !important;
+    }
+    
+    .item-input.input-control.margin-bottom-25 {
+        margin-bottom: 25px !important;
+    }
+
+    .select-text {
+        color: #326D8C !important;
+        margin-right: 12px;
+    }
+
+    .select-ios .select-icon {
+        margin-right: 4px;
+    }
+
+    .message-success {
+        margin: 30px 0 30px 0;
+        font-size: 14pt;
+    }
+
+    .message-text {
+        line-height: 20px;
+    }
+}

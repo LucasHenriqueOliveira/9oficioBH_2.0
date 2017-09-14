@@ -25,6 +25,7 @@ import { ContaPageModule } from '../pages/conta/conta.module';
 import { ContatoPageModule } from '../pages/contato/contato.module';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { CertidaoPageModule } from '../pages/certidao/certidao.module';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     CalculoPageModule,
     ContaPageModule,
     ContatoPageModule,
+    CertidaoPageModule,
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],

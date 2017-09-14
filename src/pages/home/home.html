@@ -16,39 +16,33 @@
 		<swiper [config]="config" [(index)]="index">
 			<div class="swiper-slide">
 				<div class="card">
-					<div class="item item-text-wrap" ng-click="go('app.certidao')">
+					<div class="item item-text-wrap" (click)="go('certidao')">
 						<h3>Certidão e Traslados</h3>
-						<a ng-click="go('app.certidao')">
-							<ion-icon name="add" class="icon"></ion-icon>Solicitar</a>
+						<a><ion-icon name="add" class="icon"></ion-icon>Solicitar</a>
 					</div>
 				</div>
 			</div>
 			<div class="swiper-slide">
 				<div class="card">
-					<div class="item item-text-wrap" ng-click="go('app.certidao')">
+					<div class="item item-text-wrap" (click)="go('procuracao')">
 						<h3>Procuração</h3>
-						<a ng-click="go('app.certidao')">
-							<ion-icon name="add" class="icon"></ion-icon>Solicitar</a>
+						<a><ion-icon name="add" class="icon"></ion-icon>Solicitar</a>
 					</div>
 				</div>
 			</div>
 			<div class="swiper-slide">
 				<div class="card">
-					<div class="item item-text-wrap" ng-click="go('app.certidao')">
+					<div class="item item-text-wrap" (click)="go('firma')">
 						<h3>Reconhecimento de Firma</h3>
-						<a ng-click="go('app.certidao')">
-							<ion-icon name="add" class="icon"></ion-icon>Pesquisar
-						</a>
+						<a><ion-icon name="add" class="icon"></ion-icon>Pesquisar</a>
 					</div>
 				</div>
 			</div>
 			<div class="swiper-slide">
 				<div class="card">
-					<div class="item item-text-wrap" ng-click="go('app.certidao')">
+					<div class="item item-text-wrap" (click)="go('testamento')">
 						<h3>Testamento</h3>
-						<a ng-click="go('app.certidao')">
-							<ion-icon name="add" class="icon"></ion-icon>Agendar
-						</a>
+						<a><ion-icon name="add" class="icon"></ion-icon>Agendar</a>
 					</div>
 				</div>
 			</div>

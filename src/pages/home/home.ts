@@ -5,6 +5,7 @@ import { Constants } from "../../app/constants";
 import { UserProvider } from "../../providers/user/user";
 import { DataProvider } from "../../providers/data/data";
 import { CalculoPage } from "../calculo/calculo";
+import { CertidaoPage } from '../certidao/certidao';
 
 @IonicPage()
 @Component({
@@ -117,7 +118,16 @@ export class HomePage {
 	}
 
 	go(index: string) {
-		this.navCtrl.push(CalculoPage, {"index": index});
+		switch (index) {
+			case 'itbi':
+			case 'itcd':
+				this.navCtrl.push(CalculoPage, {"index": index});
+				break;
+			case 'certidao':
+				this.navCtrl.push(CertidaoPage);
+				break;
+		}
+		
 	}
 
 }

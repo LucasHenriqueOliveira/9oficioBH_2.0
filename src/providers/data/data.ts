@@ -6,6 +6,7 @@ import 'rxjs/add/observable/from';
 import { Constants } from "../../app/constants";
 import { Storage } from '@ionic/storage';
 import { UserProvider } from "../user/user";
+import { Certidao } from '../../pages/certidao/certidao.model';
 
 /*
   Generated class for the DataProvider provider.
@@ -25,13 +26,23 @@ export class DataProvider {
 	getHistorico(id: number): Observable<string> {
 		return Observable.fromPromise(this.userProvider.getToken()).mergeMap(token => {
 			this.token = token;
-			
-			this.user = this.userProvider.getUserData();
 			const headers = new Headers(); 
 			
 			headers.append('Authorization', 'Bearer ' + this.token)
 			headers.append('Content-Type', 'application/json')
 			return this.http.get(`${this.constants.api}/historico?user_id=${id}`, new RequestOptions({headers: headers}))
+				.map(response => response.json())
+		});
+	}
+
+	setCertidao(certidao: Certidao): Observable<string> {
+		return Observable.fromPromise(this.userProvider.getToken()).mergeMap(token => {
+			this.token = token;
+			const headers = new Headers();
+			
+			headers.append('Authorization', 'Bearer ' + this.token)
+			headers.append('Content-Type', 'application/json')
+			return this.http.post(`${this.constants.api}/certidao`, JSON.stringify(certidao),  new RequestOptions({headers: headers}))
 				.map(response => response.json())
 		});
 	}
