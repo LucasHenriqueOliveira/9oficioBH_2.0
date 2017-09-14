@@ -14,7 +14,6 @@ export class PhonePipe implements PipeTransform {
 	transform(value:string){
 		if(value){
 			value = value.toString();
-			let estado = '';
 			
 			switch (value.length) {
 				case 8: // ####-####
