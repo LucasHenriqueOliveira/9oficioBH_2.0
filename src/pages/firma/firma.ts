@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Constants } from "../../app/constants";
 
 /**
@@ -17,8 +16,7 @@ import { Constants } from "../../app/constants";
 })
 export class FirmaPage {
 
-	private formFirma: FormGroup
-	hasFirma: boolean = false
+	pesquisaFirma: boolean = false
 	message: string
 	nome: string
 	cpf: string
@@ -28,24 +26,19 @@ export class FirmaPage {
 	constants: any = Constants
 
 	constructor(public navCtrl: NavController, 
-				public navParams: NavParams,
-				private formBuilder: FormBuilder) {
+				public navParams: NavParams) {
 
 		this.cidade = this.constants.cidade;
 		this.endereco = this.constants.endereco;
 		this.nome_cartorio = this.constants.nome;
 
-		this.formFirma = this.formBuilder.group({
-			cpf: this.formBuilder.control('', []),
-			nome: this.formBuilder.control('', [])
-			})
 	}
 
 	ionViewDidLoad() {
 	}
 
 	goBack() {
-		this.hasFirma = false;
+		this.pesquisaFirma = false;
 		this.nome = null;
 		this.cpf = null;
 	}

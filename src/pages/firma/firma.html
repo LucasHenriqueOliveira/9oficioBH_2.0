@@ -7,7 +7,7 @@
 		<h1>Reconhecimento de Firma</h1>
 	</div>
 	<div class="content-padding-extra">
-		<form *ngIf="!hasFirma" novalidate>
+		<form *ngIf="!pesquisaFirma" novalidate>
 			<ion-item class="item-input input-control">
 				<ion-input type="tel" [(ngModel)]="cpf" [ngModelOptions]="{standalone: true}" placeholder="CPF" CPFMask></ion-input>
 			</ion-item>
@@ -35,7 +35,7 @@
 				</button>
 			</div>
 		</form>
-		<div *ngIf="hasFirma">
+		<div *ngIf="pesquisaFirma">
 			<div class="content-padding-extra">
 				<p class="message-success">{{message}}</p>
 				<p ng-if="hasFirma" style="text-align: justify">
