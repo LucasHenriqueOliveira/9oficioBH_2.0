@@ -26,6 +26,7 @@ import { ContatoPageModule } from '../pages/contato/contato.module';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { CertidaoPageModule } from '../pages/certidao/certidao.module';
+import { FirmaPageModule } from '../pages/firma/firma.module';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { CertidaoPageModule } from '../pages/certidao/certidao.module';
     ContaPageModule,
     ContatoPageModule,
     CertidaoPageModule,
+    FirmaPageModule,
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],

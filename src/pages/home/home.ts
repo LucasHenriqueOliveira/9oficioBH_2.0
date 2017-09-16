@@ -6,6 +6,7 @@ import { UserProvider } from "../../providers/user/user";
 import { DataProvider } from "../../providers/data/data";
 import { CalculoPage } from "../calculo/calculo";
 import { CertidaoPage } from '../certidao/certidao';
+import { FirmaPage } from '../firma/firma';
 
 @IonicPage()
 @Component({
@@ -125,6 +126,9 @@ export class HomePage {
 				break;
 			case 'certidao':
 				this.navCtrl.push(CertidaoPage);
+				break;
+			case 'firma':
+				this.navCtrl.push(FirmaPage);
 				break;
 		}
 		

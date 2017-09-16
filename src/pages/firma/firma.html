@@ -1,18 +1,54 @@
-<!--
-  Generated template for the FirmaPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>firma</ion-title>
-  </ion-navbar>
-
+<ion-header class="bar-royal">
+	<ion-navbar></ion-navbar>
 </ion-header>
 
+<ion-content>
+	<div class="screen-header content-padding-extra">
+		<h1>Reconhecimento de Firma</h1>
+	</div>
+	<div class="content-padding-extra">
+		<form *ngIf="!hasFirma" novalidate>
+			<ion-item class="item-input input-control">
+				<ion-input type="tel" [(ngModel)]="cpf" [ngModelOptions]="{standalone: true}" placeholder="CPF" CPFMask></ion-input>
+			</ion-item>
+			<div class="row padding-top-10">
+				<div col-4>
 
-<ion-content padding>
+				</div>
+				<div col-4 class="text-center text-uppercase text-divisor gray">
+					ou
+				</div>
+				<div col-4>
 
+				</div>
+			</div>
+			<ion-item class="item-input input-control padding-top-25 margin-bottom-25">
+				<ion-input type="text" [(ngModel)]="nome" [ngModelOptions]="{standalone: true}" placeholder="Nome Completo"></ion-input>
+			</ion-item>
+	
+			<div class="pull-right clearfix">
+				<button class="button button-outline button-light item-icon-right" 
+						(click)="submit()"
+						[disabled]="!cpf && !nome"
+						[class.button-royal]="cpf || nome">
+						Enviar
+				</button>
+			</div>
+		</form>
+		<div *ngIf="hasFirma">
+			<div class="content-padding-extra">
+				<p class="message-success">{{message}}</p>
+				<p ng-if="hasFirma" style="text-align: justify">
+					<ion-icon name="information-circle"></ion-icon> Se dirija ao {{nome_cartorio}} na {{endereco}} - {{cidade}} para reconhecer a firma desejada.
+					O reconhecimento de firma somente será feito após verificado por um de nossos escreventes a
+					congruência de assinaturas para realizar o ato.
+				</p>
+				<div class="pull-right clearfix">
+					<button (click)="goBack()" class="button button-outline button-royal">
+						Pesquisar outra firma
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </ion-content>
