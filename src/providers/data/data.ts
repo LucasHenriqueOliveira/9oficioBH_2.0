@@ -47,4 +47,16 @@ export class DataProvider {
 		});
 	}
 
+	getFirma(cpf: any, nome: any): Observable<string> {
+		return Observable.fromPromise(this.userProvider.getToken()).mergeMap(token => {
+			this.token = token;
+			const headers = new Headers();
+			
+			headers.append('Authorization', 'Bearer ' + this.token)
+			headers.append('Content-Type', 'application/json')
+			return this.http.get(`${this.constants.api}/firma?cpf=${cpf}&nome=${nome}`,  new RequestOptions({headers: headers}))
+				.map(response => response.json())
+		});
+	}
+
 }
